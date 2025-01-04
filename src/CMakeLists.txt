@@ -1,4 +1,4 @@
-add_library(sut STATIC calc.cpp run.cpp)
+add_library(sut STATIC calc.cpp run.cpp rng_mt19937.cpp)
 target_include_directories(sut INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 # 作用: 任何链接到 sut 库的目标都会自动包含(include)当前源目录，当它们在源代码中包含 sut 的头文件时，可以直接使用文件名，而不需要使用完整路径。
 # sut本身知道自己的头文件在哪里，但是链接到 sut 的目标不知道 sut 的头文件在哪里，所以需要通过INTERFACE关键字告诉链接到 sut 的目标 sut 的头文件在哪里。
