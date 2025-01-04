@@ -5,6 +5,15 @@ target_include_directories(sut INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 # 通过 INTERFACE 关键字，sut 会将 sut 的头文件路径传递给链接到 sut 的目标，这样链接到 sut 的目标就可以直接使用 sut 的头文件了。
 # INTERFACE 意味着消费者需要但生产者不需要的东西。PUBLIC 意味着生产者和消费者都需要的东西。PRIVATE 意味着只有生产者需要的东西。
 
+if (CMAKE_BUILD_TYPE STREQUAL Debug)
+    target_compile_options(sut PRIVATE --coverage)
+    target_link_options(sut PUBLIC --coverage)
+    add_custom_command(TARGET sut PRE_BUILD COMMAND
+        find ${CMAKE_BINARY_DIR} -type f
+            -name '*.gcda' -exec rm {} +
+    )
+endif ()
+
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE sut)
 # 作用: 将 sut 库链接到 main 可执行文件中。
