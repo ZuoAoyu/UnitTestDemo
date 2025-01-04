@@ -5,5 +5,6 @@ int Calc::Sum(int a, int b) {
 }
 
 int Calc::Multiply(int a, int b) {
-  return a * a;  // 一个错误的实现
+  // return a * a;  // 一个错误的实现
+  return a * b;  // 修复错误
 }
