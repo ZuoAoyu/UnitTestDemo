@@ -11,7 +11,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(unit_tests
                 calc_test.cpp
                 run_test.cpp)
-target_link_libraries(unit_tests PRIVATE sut gtest_main)
+target_link_libraries(unit_tests PRIVATE sut gtest_main gmock)
 # 作用: 将 sut 库 和 gtest_main 链接到 unit_tests 可执行文件中。
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
