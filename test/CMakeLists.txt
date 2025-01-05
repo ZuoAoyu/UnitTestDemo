@@ -16,6 +16,9 @@ target_link_libraries(unit_tests PRIVATE sut gtest_main gmock)
 include(Coverage)
 AddCoverage(unit_tests)
 
+include(Valgrind)
+AddValgrind(unit_tests)
+
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
 # 使所有的测试用例都能被发现并执行。
